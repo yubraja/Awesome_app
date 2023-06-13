@@ -42,10 +42,8 @@ class _HomeState extends State<Home> {
         currentIndex:_pageIdx ,
         elevation: 5,
       ),
-      body: Container(
-        child: Center(
-          child: navScreen[_pageIdx],
-        ),
+      body: Center(
+        child: navScreen[_pageIdx],
       ),
     );
   }

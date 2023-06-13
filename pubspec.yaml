@@ -32,7 +32,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_osm_plugin: ^0.55.1
-  latlong: ^0.6.1
 
 dev_dependencies:
   flutter_lints: ^2.0.0
