@@ -10,18 +10,16 @@ class MapScreen extends StatefulWidget {
 
 class _MapScreenState extends State<MapScreen> {
 
-late MapController mapController;
-
+final mapController = MapController.withUserPosition(
+        trackUserLocation: UserTrackingOption(
+           enableTracking: true,
+           unFollowUser: false,
+        ),
+        );
   @override
   void initState() {
 
 
-    mapController = MapController.withUserPosition(
-        trackUserLocation: UserTrackingOption(
-           enableTracking: true,
-           unFollowUser: false,
-        )
-);
     // TODO: implement initState
     super.initState();
   }
