@@ -50,100 +50,70 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height * 0.75,
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: Colors.amber,
-        ),
-        child: OSMFlutter(
-          controller: _mapController,
-          mapIsLoading: const Center(
-            child: CircularProgressIndicator(),
-          ),
-          userTrackingOption: UserTrackingOption(enableTracking: true),
-          initZoom: 12,
-          minZoomLevel: 4,
-          maxZoomLevel: 14,
-          stepZoom: 1.0,
-          userLocationMarker: UserLocationMaker(
-              personMarker: MarkerIcon(
+      body: Column(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.75,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: Colors.amber,
+            ),
+            child: OSMFlutter(
+              controller: _mapController,
+              mapIsLoading: const Center(
+                child: CircularProgressIndicator(),
+              ),
+              userTrackingOption: UserTrackingOption(enableTracking: true),
+              initZoom: 12,
+              minZoomLevel: 4,
+              maxZoomLevel: 14,
+              stepZoom: 1.0,
+              userLocationMarker: UserLocationMaker(
+                  personMarker: MarkerIcon(
+                    icon: Icon(
+                      Icons.person,
+                      color: Colors.black,
+                      size: 48,
+                    ),
+                  ),
+                  directionArrowMarker: MarkerIcon(
+                    icon: Icon(
+                      Icons.location_on,
+                      color: Colors.red,
+                      size: 80,
+                    ),
+                  )),
+              roadConfiguration: RoadOption(roadColor: Colors.blueGrey),
+              markerOption: MarkerOption(
+                  defaultMarker: MarkerIcon(
                 icon: Icon(
-                  Icons.person,
+                  Icons.person_pin_circle,
                   color: Colors.black,
                   size: 48,
                 ),
-              ),
-              directionArrowMarker: MarkerIcon(
-                icon: Icon(
-                  Icons.location_on,
-                  color: Colors.red,
-                  size: 80,
-                ),
               )),
-          roadConfiguration: RoadOption(roadColor: Colors.blueGrey),
-          markerOption: MarkerOption(
-              defaultMarker: MarkerIcon(
-            icon: Icon(
-              Icons.person_pin_circle,
-              color: Colors.black,
-              size: 48,
-            ),
-          )),
-          onMapIsReady: (isReady) async {
-            if (isReady) {
-              await Future.delayed(Duration(seconds: 1), () async {
-                await _mapController.currentLocation();
-              });
-            }
-          },
-          onGeoPointClicked: (geoPoint) {
-            var key = '${geoPoint.latitude}_${geoPoint.longitude}';
-            if (geoPoint != null) {
-              showBottomSheet(
-                  context: context,
-                  builder: (context) {
-                    return Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Expanded(
-                                child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  'position ${markerMap[key]}',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blue),
-                                ),
-                                const Divider(thickness: 1,),
-                                  Text(
-                                  key,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: Colors.red),
-                                ),
-                              ],
-                            )),
-                            GestureDetector(
-                              onTap: () => Navigator.pop(context),
-                              child: Icon(Icons.clear),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
+              onMapIsReady: (isReady) async {
+                if (isReady) {
+                  await Future.delayed(Duration(seconds: 1), () async {
+                    await _mapController.currentLocation();
                   });
-            }
-          },
-        ),
+                }
+              },
+              
+            ),
+
+
+          ),
+
+
+
+
+          Card(
+            child: ListView(),
+          )
+        ],
       ),
+
     );
   }
 }
