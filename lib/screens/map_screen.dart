@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
+import '../models/box.dart';
+import '../models/places.dart';
 
 class MapScreen extends StatefulWidget {
   MapScreen({super.key});
@@ -109,7 +111,13 @@ class _MapScreenState extends State<MapScreen> {
 
 
           Card(
-            child: ListView(),
+            child: ListView.builder(
+              itemCount: data.length
+              ,itemBuilder: (context,index){
+
+
+              
+            }),
           )
         ],
       ),
