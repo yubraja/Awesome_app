@@ -1,5 +1,7 @@
+import 'package:awesome_app/provider/place_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
+import 'package:provider/provider.dart';
 import '../models/box.dart';
 import '../models/places.dart';
 
@@ -101,27 +103,38 @@ class _MapScreenState extends State<MapScreen> {
                   });
                 }
               },
-              
             ),
-
-
           ),
+          Consumer<PlaceData>(
 
 
-
-
-          Card(
-            child: ListView.builder(
-              itemCount: data.length
-              ,itemBuilder: (context,index){
-
-
-              
-            }),
-          )
+            
+            builder: ((context, placeData, child) => Card(
+                  child: ListView.builder(
+                    itemBuilder: (context, index) {
+                      Text(placeData.data[index].name);
+                    },
+                  ),
+                )),
+          ),
         ],
       ),
-
     );
   }
 }
+
+
+
+
+// SizedBox(
+//               child: Card(
+//                 child: ListView.builder(
+//                   itemCount: placeData.data.length
+//                   ,itemBuilder: (context,index){
+                      
+                      
+                  
+//                 }),
+//               ),
+//             ),
+//           )
