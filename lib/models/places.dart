@@ -17,7 +17,7 @@ class Places {
     this.review,
   });
 
-  List<Places> data = [
+  List<Places> _data = [
     Places(
         name: 'patan durbar square',
         lat: 23.8500,
@@ -44,7 +44,13 @@ class Places {
           'Kathmandu Durbar Square. The place which has witnessed and received one king after the other as they sat and ruled over Nepal a long time ago, where new rulers were crowned while the steady beats of drums and trumpets filled the place. The regal Kathmandu Durbar Square is one of the three durbar squares in the country. Till date, the place remains the most remarkable legacy of Kathmandu\'s traditional architecture. Even though the unfortunate earthquake of 2015 took its toll on the building and around half a dozen places within the premises collapsed, it has still retained its original glory. Three squares - A former elephant stable Basantapur square, main Durbar square on the west and another part of Durbar Square that houses the entrance to Hanuman Dhoka which are loosely connected make up the Durbar Square area.'        
         ),
 
-
   
   ];
+
+
+  List<Places> get data=> _data;
+  
+
+
+  
 }
