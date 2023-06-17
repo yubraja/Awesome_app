@@ -108,9 +108,10 @@ class _MapScreenState extends State<MapScreen> {
           Consumer<PlaceData>(
 
 
-            
+
             builder: ((context, placeData, child) => Card(
                   child: ListView.builder(
+                    itemCount: placeData.data.length,
                     itemBuilder: (context, index) {
                       Text(placeData.data[index].name);
                     },
