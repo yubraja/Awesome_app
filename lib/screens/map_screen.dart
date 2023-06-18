@@ -2,8 +2,7 @@ import 'package:awesome_app/provider/place_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
 import 'package:provider/provider.dart';
-import '../models/box.dart';
-import '../models/places.dart';
+import '../models/box_model.dart';
 
 class MapScreen extends StatefulWidget {
   MapScreen({super.key});
@@ -106,36 +105,27 @@ class _MapScreenState extends State<MapScreen> {
             ),
           ),
           Consumer<PlaceData>(
-
-
-
-            builder: ((context, placeData, child) => Card(
+            builder: (context, placeData, child) {
+              return Expanded(
+                child: Container(
                   child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
                     itemCount: placeData.data.length,
                     itemBuilder: (context, index) {
-                      Text(placeData.data[index].name);
+                      return BoxModel(
+                        name: placeData.data[index].name,
+                        image: placeData.data[index].image,
+                        description: placeData.data[index].description,
+                        ratings: placeData.data[index].ratings,
+                      );
                     },
                   ),
-                )),
+                ),
+              );
+            },
           ),
         ],
       ),
     );
   }
 }
-
-
-
-
-// SizedBox(
-//               child: Card(
-//                 child: ListView.builder(
-//                   itemCount: placeData.data.length
-//                   ,itemBuilder: (context,index){
-                      
-                      
-                  
-//                 }),
-//               ),
-//             ),
-//           )
