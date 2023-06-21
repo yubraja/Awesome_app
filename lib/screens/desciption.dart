@@ -4,15 +4,29 @@ class Description extends StatelessWidget {
 
   
   String name;
+  String image;
+  String description;
+  double? ratings;
 
-  Description({ required this.name});
+  Description({ required this.name,required this.image,required this.description, required this.ratings});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.of(context).pop();
+      }),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+      body: Column(
+        children: [
 
-      child: Text(name),
+          Center(child: Hero(tag: 'image', child: Image(image: AssetImage(image))))
+        ],
 
+    
+        ),
+    
+      
     );
   }
 }

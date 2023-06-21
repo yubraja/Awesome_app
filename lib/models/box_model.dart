@@ -20,7 +20,7 @@ class BoxModel extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>Description(name: name,),
+          builder: (context) =>Description(name: name,image:image,description:description,ratings:ratings),
         ),
       ),
       child: Container(
@@ -37,9 +37,12 @@ class BoxModel extends StatelessWidget {
                       child: SizedBox(
                         height: MediaQuery.of(context).size.height * 0.15,
                         width: double.infinity,
-                        child: Image(
-                          image: AssetImage(image),
-                          fit: BoxFit.cover,
+                        child: Hero(
+                          tag: 'image',
+                          child: Image(
+                            image: AssetImage(image),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
